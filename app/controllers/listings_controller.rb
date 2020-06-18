@@ -78,7 +78,7 @@ class ListingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def listing_params
-    params.require(:listing).permit(:title, :description, :equipment, :model, :length, :beam, :draft, :displacement, :year, :cabins, :berths, :engine, :fuel, :hours, :horsepower, :location, :zip_code, :public_name, :email, :phone_number, :published, :thumbnail, manufacturer_ids: [])
+    params.require(:listing).permit(:title, :description, :equipment, :model, :length, :beam, :draft, :displacement, :year, :cabins, :berths, :engine, :fuel, :hours, :horsepower, :location, :zip_code, :public_name, :email, :phone_number, :price, :published, :thumbnail, manufacturer_ids: [])
   end
 
   def set_listings_and_manufacturer_with_criteria(requested_manufacturer, requested_order)
