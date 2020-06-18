@@ -96,7 +96,7 @@ class ListingsController < ApplicationController
     listings = if @manufacturer.nil?
                 Listing.none
                 else
-                  @manufacturer.games
+                  @manufacturer.listings
                 end
   end
 
@@ -110,9 +110,9 @@ class ListingsController < ApplicationController
                 _listings.order('price DESC')
               when 'Lowest Priced'
                 _listings.order('price ASC')
-              when 'Newest First'
+              when 'Newest Listings'
                 _listings.order('created_at DESC')
-              when 'Oldest First'
+              when 'Oldest Listings'
                 _listings.order('created_at ASC')
               else
                 _listings.order('title ASC')

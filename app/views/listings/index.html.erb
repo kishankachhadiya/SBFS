@@ -1,9 +1,9 @@
 <div class="search-container">
   <%= form_tag(listings_search_path, remote: true) do %>
       <div class="field">
-        <%= label_tag :make, "Manufacturer: " %>
+        <%= label_tag :manufacturer, "Manufacturer: " %>
 
-        <%= select_tag :make, options_from_collection_for_select(
+        <%= select_tag :manufacturer, options_from_collection_for_select(
             @manufacturers.to_a.unshift(Manufacturer.new(id: 0, name: "All")),
             "name",
             "name",
