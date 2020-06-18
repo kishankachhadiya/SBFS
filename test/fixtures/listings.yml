@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  equipment: MyText
+  model: MyString
+  length: 1
+  beam: 1
+  draft: 1
+  displacement: 1
+  year: 1
+  cabins: 1
+  berths: 1
+  engine: MyString
+  fuel: MyString
+  hours: 1
+  horsepower: 1
+  location: MyString
+  zip_code: 1
+  public_name: MyString
+  email: MyString
+  phone_number: MyString
+  published: 2020-06-18
+
+two:
+  title: MyString
+  description: MyText
+  equipment: MyText
+  model: MyString
+  length: 1
+  beam: 1
+  draft: 1
+  displacement: 1
+  year: 1
+  cabins: 1
+  berths: 1
+  engine: MyString
+  fuel: MyString
+  hours: 1
+  horsepower: 1
+  location: MyString
+  zip_code: 1
+  public_name: MyString
+  email: MyString
+  phone_number: MyString
+  published: 2020-06-18

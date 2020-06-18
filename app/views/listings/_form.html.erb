@@ -1,0 +1,132 @@
+<%= form_with(model: listing, local: true) do |form| %>
+  <% if listing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+        <% listing.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Manufacturer %>
+    <%= form.collection_select :manufacturer_ids, Manufacturer.all, :id, :name, {}, {multiple:true} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :equipment %>
+    <%= form.text_area :equipment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :model %>
+    <%= form.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :length %>
+    <%= form.number_field :length %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beam %>
+    <%= form.number_field :beam %>
+  </div>
+
+  <div class="field">
+    <%= form.label :draft %>
+    <%= form.number_field :draft %>
+  </div>
+
+  <div class="field">
+    <%= form.label :displacement %>
+    <%= form.number_field :displacement %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cabins %>
+    <%= form.number_field :cabins %>
+  </div>
+
+  <div class="field">
+    <%= form.label :berths %>
+    <%= form.number_field :berths %>
+  </div>
+
+  <div class="field">
+    <%= form.label :engine %>
+    <%= form.text_field :engine %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fuel %>
+    <%= form.text_field :fuel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hours %>
+    <%= form.number_field :hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :horsepower %>
+    <%= form.number_field :horsepower %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zip_code %>
+    <%= form.number_field :zip_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :public_name %>
+    <%= form.text_field :public_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.phone_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thumbnail %>
+    <%= form.file_field :thumbnail %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published %>
+    <%= form.date_select :published %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

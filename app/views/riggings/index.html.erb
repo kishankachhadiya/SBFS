@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Riggings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rigging</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @riggings.each do |rigging| %>
+      <tr>
+        <td><%= rigging.rigging %></td>
+        <td><%= link_to 'Show', rigging %></td>
+        <td><%= link_to 'Edit', edit_rigging_path(rigging) %></td>
+        <td><%= link_to 'Destroy', rigging, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rigging', new_rigging_path %>

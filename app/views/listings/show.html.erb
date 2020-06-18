@@ -1,0 +1,116 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @listing.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Equipment:</strong>
+  <%= @listing.equipment %>
+</p>
+
+<p>
+  <strong>Manufacturer:</strong>
+  <% @listing.manufacturers.each do |manufacturer| %>
+  <%= link_to manufacturer.name, listings_path(manufacturer: manufacturer.name) %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @listing.model %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @listing.length %>
+</p>
+
+<p>
+  <strong>Beam:</strong>
+  <%= @listing.beam %>
+</p>
+
+<p>
+  <strong>Draft:</strong>
+  <%= @listing.draft %>
+</p>
+
+<p>
+  <strong>Displacement:</strong>
+  <%= @listing.displacement %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @listing.year %>
+</p>
+
+<p>
+  <strong>Cabins:</strong>
+  <%= @listing.cabins %>
+</p>
+
+<p>
+  <strong>Berths:</strong>
+  <%= @listing.berths %>
+</p>
+
+<p>
+  <strong>Engine:</strong>
+  <%= @listing.engine %>
+</p>
+
+<p>
+  <strong>Fuel:</strong>
+  <%= @listing.fuel %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @listing.hours %>
+</p>
+
+<p>
+  <strong>Horsepower:</strong>
+  <%= @listing.horsepower %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @listing.location %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @listing.zip_code %>
+</p>
+
+<p>
+  <strong>Public name:</strong>
+  <%= @listing.public_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @listing.email %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @listing.phone_number %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @listing.published %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listings_path %>

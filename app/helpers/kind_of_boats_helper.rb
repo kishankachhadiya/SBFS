@@ -1,0 +1,2 @@
+module KindOfBoatsHelper
+end

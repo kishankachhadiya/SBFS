@@ -1,0 +1,22 @@
+<%= form_with(model: hull, local: true) do |form| %>
+  <% if hull.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hull.errors.count, "error") %> prohibited this hull from being saved:</h2>
+
+      <ul>
+        <% hull.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :hull %>
+    <%= form.text_field :hull %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

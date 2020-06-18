@@ -1,0 +1,22 @@
+<%= form_with(model: rigging, local: true) do |form| %>
+  <% if rigging.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rigging.errors.count, "error") %> prohibited this rigging from being saved:</h2>
+
+      <ul>
+        <% rigging.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :rigging %>
+    <%= form.text_field :rigging %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

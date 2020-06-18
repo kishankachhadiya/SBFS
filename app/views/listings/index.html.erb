@@ -1,0 +1,30 @@
+<div class="search-container">
+  <%= form_tag(listings_search_path, remote: true) do %>
+      <div class="field">
+        <%= label_tag :make, "Manufacturer: " %>
+
+        <%= select_tag :make, options_from_collection_for_select(
+            @manufacturers.to_a.unshift(Manufacturer.new(id: 0, name: "All")),
+            "name",
+            "name",
+            "0") %>
+
+        <%= label_tag :order, "Order" %>
+        <%= select_tag :order, options_for_select([
+                                                      "A-Z",
+                                                      "Z-A",
+                                                      "Highest Priced",
+                                                      "Lowest Priced",
+                                                      "Newest Listings",
+                                                      "Oldest Listings"
+                                                  ]), {include_blank: "Order"} %>
+
+
+        <%= submit_tag "Filter" %>
+      </div>
+  <% end %>
+
+  <div id="manufacturers">
+  <%=  render 'listings/manufacturers' %>
+  </div>
+
