@@ -1,5 +1,6 @@
 class RiggingsController < ApplicationController
   before_action :set_rigging, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin!, except: [:index, :show]
 
   # GET /riggings
   # GET /riggings.json

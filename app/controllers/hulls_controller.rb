@@ -1,5 +1,6 @@
 class HullsController < ApplicationController
   before_action :set_hull, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin!, except: [:index, :show]
 
   # GET /hulls
   # GET /hulls.json

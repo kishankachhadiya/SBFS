@@ -1,5 +1,6 @@
 class KindOfBoatsController < ApplicationController
   before_action :set_kind_of_boat, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin!, except: [:index, :show]
 
   # GET /kind_of_boats
   # GET /kind_of_boats.json

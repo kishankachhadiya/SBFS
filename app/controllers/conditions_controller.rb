@@ -1,5 +1,6 @@
 class ConditionsController < ApplicationController
   before_action :set_condition, only: [:show, :edit, :update, :destroy]
+  before_action :is_admin!, except: [:index, :show]
 
   # GET /conditions
   # GET /conditions.json
