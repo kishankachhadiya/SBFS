@@ -127,6 +127,12 @@
   </div>
 
   <div class="field">
+    <%= "Feature Listing?" %>
+    <%= form.check_box :featured %>
+    <%= "($15)" %>
+  </div>
+
+  <div class="field">
     <%= form.label :published %>
     <%= form.date_select :published %>
   </div>
