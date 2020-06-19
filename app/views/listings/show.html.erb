@@ -83,6 +83,13 @@
 </p>
 
 <p>
+  <strong>State:</strong>
+  <% @listing.states.each do |state| %>
+  <%= link_to state.state, listings_path(state: state.state) %>
+  <% end %>
+</p>
+
+<p>
   <strong>Location:</strong>
   <%= @listing.location %>
 </p>

@@ -92,6 +92,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :state %>
+    <%= form.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true} %>
+  </div>
+
+  <div class="field">
     <%= form.label :location %>
     <%= form.text_field :location %>
   </div>

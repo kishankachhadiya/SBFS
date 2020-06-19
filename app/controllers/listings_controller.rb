@@ -5,11 +5,11 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    set_listings_and_manufacturer_with_criteria(params[:manufacturer], '')
+    set_listings_and_manufacturer_with_criteria(params[:manufacturer], '', '')
   end
 
   def search
-    set_listings_and_manufacturer_with_criteria(params[:manufacturer], params[:order])
+    set_listings_and_manufacturer_with_criteria(params[:manufacturer], params[:order], params[:state])
   end
 
   # GET /listings/1
@@ -76,12 +76,16 @@ class ListingsController < ApplicationController
     @manufacturers = Manufacturer.all
   end
 
-  # Only allow a list of trusted parameters through.
-  def listing_params
-    params.require(:listing).permit(:title, :description, :equipment, :model, :featured, :length, :beam, :draft, :displacement, :year, :cabins, :berths, :engine, :fuel, :hours, :horsepower, :location, :zip_code, :public_name, :email, :phone_number, :price, :published, :thumbnail, manufacturer_ids: [])
+  def set_states
+    @states = State.all
   end
 
-  def set_listings_and_manufacturer_with_criteria(requested_manufacturer, requested_order)
+  # Only allow a list of trusted parameters through.
+  def listing_params
+    params.require(:listing).permit(:title, :description, :equipment, :model, :featured, :length, :beam, :draft, :displacement, :year, :cabins, :berths, :engine, :fuel, :hours, :horsepower, :location, :zip_code, :public_name, :email, :phone_number, :price, :published, :thumbnail, manufacturer_ids: [], state_ids: [])
+  end
+
+  def set_listings_and_manufacturer_with_criteria(requested_manufacturer, requested_order, requested_state)
     if requested_manufacturer.nil? || requested_manufacturer.eql?('All')
       listings_by_manufacturer = Listing.all
       @manufacturer_name = 'All'
@@ -89,8 +93,15 @@ class ListingsController < ApplicationController
       listings_by_manufacturer = filter_listings_by_manufacturer(requested_manufacturer)
       @manufacturer_name = requested_manufacturer
     end
-    order_listings(requested_order, listings_by_manufacturer)
+    
+    if requested_state == '' || requested_state.nil? || requested_state.eql?('All')
+      listings_by_state = listings_by_manufacturer
+    else
+      listings_by_state = filter_listings_by_state(requested_state, listings_by_manufacturer)
+    end
+    order_listings(requested_order, listings_by_state)
   end
+
   def filter_listings_by_manufacturer(manufacturer_name)
     @manufacturer = Manufacturer.find_by(name: manufacturer_name)
     listings = if @manufacturer.nil?
@@ -98,6 +109,17 @@ class ListingsController < ApplicationController
                 else
                   @manufacturer.listings
                 end
+  end
+
+  def filter_listings_by_state(state_name, listings_by_manufacturer)
+    @manufacturer = State.find_by(state: state_name)
+    listings = if @manufacturer.nil?
+             # Listing.none
+           else
+             @manufacturer.listings.where(id: listings_by_manufacturer.pluck(:id))
+
+           end
+
   end
 
   def order_listings(_order, _listings)
