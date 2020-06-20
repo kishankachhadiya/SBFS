@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   resources :riggings
   resources :kind_of_boats
   resources :manufacturers
-  resources :listings
+  resources :listings do
+    member do
+      put 'like' => 'listings#like'
+    end
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

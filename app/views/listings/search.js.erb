@@ -1,4 +1,4 @@
 var manufacturers = document.getElementById("manufacturers");
 var listings = document.getElementById("listings")
-
+window.history.replaceState(null, null, "?manufacturer=<%= @manufacturer_name %>?order=<%= @order%>");
 manufacturers.innerHTML = "<%= j render 'listings/manufacturers' %>";

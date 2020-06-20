@@ -2,7 +2,7 @@
 <div id="listings">
     <% @listings.each do |listing| %>
     <% if listing.thumbnail.attached? %>
-    <%= link_to image_tag(listing.resized_thumbnail), listing %>
+    <%= link_to image_tag(listing.resized_thumbnail), listing_path(listing, manufacturer: @manufacturer_name, order: @order) %>
     <% else %>
     <div style="width: 240px; height: 135px">
         <%= link_to listing.title, listing %>

@@ -1,3 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <%= image_tag(@listing.thumbnail, class:'img-fluid') if @listing.thumbnail.attached? %>
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                        Are You Interested?
+                    </h4>
+                </div>
+                <div class="col-12">
+                    <h5>
+                        <div id="like-count">
+                            <%= render 'listings/likes', listing: @listing %>
+                        </div>
+                        <div id="like-link">
+                            <%= render 'listings/like_link', listing: @listing %>
+                        </div>
+                        <hr />
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h6>
+                        Message Owner
+                    </h6>
+                </div>
+                <% @listing.manufacturers.each do |manufacturer| %>
+                <div class="col-6">
+                    <%= link_to manufacturer.name, root_path(manufacturer: manufacturer.name) %>
+                </div>
+                <% end %>
+                <div class="col-12">
+                    <% if current_user&.admin %>
+                    <div class="btn-group">
+                        <%= link_to 'Edit', edit_listing_path(@game), class: 'btn btn-warning' %>
+                        <%= link_to 'Delete', @listing, method: :delete, class: 'btn btn-danger' %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <h1>
+                <% if params[:manufacturer].nil? %>
+                <%= link_to @listing.title, root_path %>
+                <% else %>
+                <%= link_to @listing.title, root_path(manufacturer: params[:manufacturer], order: params[:order]) %>
+                <% end %>
+            </h1>
+            <div class="container">
+                <%= @listing.description %>
+            </div>
+        </div>
+    </div>
+</div>
 <p id="notice"><%= notice %></p>
 <%= image_tag(@listing.resized_thumbnail) if @listing.thumbnail.attached? %>
 <p>
@@ -85,7 +142,7 @@
 <p>
   <strong>State:</strong>
   <% @listing.states.each do |state| %>
-  <%= link_to state.state, listings_path(state: state.state) %>
+  <%= link_to state.state, root_path(state: state.state) %>
   <% end %>
 </p>
 

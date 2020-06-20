@@ -1,11 +1,13 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :like]
   before_action :set_manufacturers, except: [:show, :destroy]
+  before_action :is_admin!, except: [:index, :show, :edit, :update, :like]
+  before_action :authenticate_user!, only: [:like]
 
   # GET /listings
   # GET /listings.json
   def index
-    set_listings_and_manufacturer_with_criteria(params[:manufacturer], '', '')
+    set_listings_and_manufacturer_with_criteria(params[:manufacturer], params[:order], '')
   end
 
   def search
@@ -66,6 +68,14 @@ class ListingsController < ApplicationController
     end
   end
 
+  def like
+    if current_user.voted_for? @listing
+      @listing.unliked_by current_user
+    else
+      @listing.liked_by current_user
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_listing
@@ -99,6 +109,7 @@ class ListingsController < ApplicationController
     else
       listings_by_state = filter_listings_by_state(requested_state, listings_by_manufacturer)
     end
+    @order = requested_order
     order_listings(requested_order, listings_by_state)
   end
 
