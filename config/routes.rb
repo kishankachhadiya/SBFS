@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'listings#index'
   post 'listings/search'
+  get '/about' => 'pages#about'
   resources :conditions
   resources :states
   resources :materials

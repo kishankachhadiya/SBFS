@@ -27,6 +27,7 @@ gem 'image_processing', '~> 1.2'
 gem 'devise'
 gem 'simple_form'
 gem 'acts_as_votable'
+gem "mini_magick"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

@@ -1,3 +1,4 @@
+<br>
 <div class="container">
     <div class="row">
         <div class="col-4">
@@ -5,7 +6,7 @@
             <div class="row">
                 <div class="col-12">
                     <h4>
-                        Are You Interested?
+                        
                     </h4>
                 </div>
                 <div class="col-12">
@@ -54,6 +55,12 @@
             </div>
         </div>
     </div>
+</div>
+<br>
+<div class="container">
+  <% (0...@listing.images.count).each do |image| %>
+                    <%= image_tag(@listing.manyimage(image)) %>
+                    <% end %>
 </div>
 <p id="notice"><%= notice %></p>
 <%= image_tag(@listing.resized_thumbnail) if @listing.thumbnail.attached? %>

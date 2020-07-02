@@ -1,12 +1,22 @@
-<h1><%= link_to @manufacturer_name, root_path %></h1>
-<div id="listings">
-    <% @listings.each do |listing| %>
-    <% if listing.thumbnail.attached? %>
-    <%= link_to image_tag(listing.resized_thumbnail), listing_path(listing, manufacturer: @manufacturer_name, order: @order) %>
-    <% else %>
-    <div style="width: 240px; height: 135px">
-        <%= link_to listing.title, listing %>
+<div class="container">
+    <h1><%= link_to @manufacturer_name, root_path %></h1>
+    <div id="listings">
+        <% @listings.each do |listing| %>
+        <% if listing.thumbnail.attached? %>
+        <div class="item">
+            <%= link_to image_tag(listing.resized_thumbnail), listing_path(listing, manufacturer: @manufacturer_name, order: @order) %>
+            <span class="caption">
+            <%= link_to listing.title, listing %><p>
+            Length: <%= link_to listing.length, listing %> ft / 
+            Price: $<%= link_to listing.price, listing %>
+            Year: <%= link_to listing.year, listing %>
+            State: <% listing.states %>
+            <% else %>
+            <div style="width: 240px; height: 135px">
+                <%= link_to listing.title, listing %>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
     </div>
-    <% end %>
-    <% end %>
 </div>

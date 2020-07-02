@@ -1,5 +1,5 @@
 <% if current_user %>
-<% vote_text = current_user&.voted_for?(listing) ? "No longer interested" : "Yes, I'm interested!" %>
+<% vote_text = current_user&.voted_for?(listing) ? "" : "Show Interest" %>
 
 <%= link_to vote_text, like_listing_path(listing), method: :put, remote: :true, class: 'like-post' %>
 <% else %>
