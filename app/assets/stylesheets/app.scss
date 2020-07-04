@@ -2,3 +2,19 @@
 @import "manufacturers.scss";
 @import "states.scss";
 @import "actiontext.scss";
+@import "pages.scss";
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 0px; /* Margin bottom by footer height */
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
