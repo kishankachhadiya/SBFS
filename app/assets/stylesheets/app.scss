@@ -4,17 +4,31 @@
 @import "actiontext.scss";
 @import "pages.scss";
 
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
   position: relative;
   min-height: 100%;
 }
 body {
-  margin-bottom: 0px; /* Margin bottom by footer height */
+  /* Margin bottom by footer height */
+  margin-top: 80px;
+  margin-bottom: 235px;
 }
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 225px;
+  background-color: #343A40;
 }
