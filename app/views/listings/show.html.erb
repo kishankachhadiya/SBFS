@@ -6,7 +6,6 @@
             <div class="row">
                 <div class="col-12">
                     <h4>
-                        
                     </h4>
                 </div>
                 <div class="col-12">
@@ -19,19 +18,17 @@
                         </div>
                         <hr />
                     </h5>
+                    Published on: <td><%= @listing.published %></td><p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
                     <h6>
-                        Message Owner
+                      <button type="button" class="btn btn-outline-primary">Message Owner</button>
                     </h6>
                 </div>
-                <% @listing.manufacturers.each do |manufacturer| %>
                 <div class="col-6">
-                    <%= link_to manufacturer.name, root_path(manufacturer: manufacturer.name) %>
                 </div>
-                <% end %>
                 <div class="col-12">
                     <% if current_user&.admin %>
                     <div class="btn-group">
@@ -39,6 +36,17 @@
                         <%= link_to 'Delete', @listing, method: :delete, class: 'btn btn-danger' %>
                     </div>
                     <% end %>
+                  <p>
+                  <h4>Owner's Contact</h4>
+                  <strong>Name:</strong> <%= @listing.public_name %><p>
+                  <strong>Email:</strong> <%= @listing.email %><br>
+                  <strong>Phone:</strong> <%= @listing.phone_number %>
+                  <p>
+                  <h4>Sailboat's Location</h4>
+                  <strong>Location:</strong> <td><%= @listing.location %></td><p>
+                  <strong>State:</strong> <% @listing.states.each do |state| %>
+                  <%= link_to state.state, root_path(state: state.state) %>
+                  <% end %>
                 </div>
             </div>
         </div>
@@ -51,142 +59,83 @@
                 <% end %>
             </h1>
             <div class="container">
-                <%= @listing.description %>
+                <%= @listing.description %><p>
+                <h3>Specifications</h3>
+                <div class="table-responsive-sm">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Manufacturer</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><% @listing.manufacturers.each do |manufacturer| %>
+                        <%= link_to manufacturer.name, listings_path(manufacturer: manufacturer.name) %>
+                        <% end %></th>
+                        <td><%= @listing.model %></td>
+                        <td><%= @listing.year %></td>
+                        <td>$<%= @listing.price %></td>
+                      </tr>
+                    </body>
+                  </table>
+                </div>
+
+                <div class="table-responsive-md">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Length</th>
+                        <th scope="col">Beam</th>
+                        <th scope="col">Draft</th>
+                        <th scope="col">Displacement</th>
+                        <th scope="col">Cabins</th>
+                        <th scope="col">Berths</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><%= @listing.length %>ft</td>
+                        <td><%= @listing.beam %>ft</td>
+                        <td><%= @listing.draft %>ft</td>
+                        <td><%= @listing.displacement %>lbs</td>
+                        <td><%= @listing.cabins %></td>
+                        <td><%= @listing.berths %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="table-responsive-md">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Engine</th>
+                        <th scope="col">Horsepower</th>
+                        <th scope="col">Fuel</th>
+                        <th scope="col">Hours</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><%= @listing.engine %></td>
+                        <td><%= @listing.horsepower %>hp</td>
+                        <td><%= @listing.fuel %></td>
+                        <td><%= @listing.hours %></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <br>
 <div class="container">
+  <h3>Photos</h3>
   <% (0...@listing.images.count).each do |image| %>
                     <%= image_tag(@listing.manyimage(image)) %>
                     <% end %>
 </div>
-<p id="notice"><%= notice %></p>
-<%= image_tag(@listing.resized_thumbnail) if @listing.thumbnail.attached? %>
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>Equipment:</strong>
-  <%= @listing.equipment %>
-</p>
-
-<p>
-  <strong>Manufacturer:</strong>
-  <% @listing.manufacturers.each do |manufacturer| %>
-  <%= link_to manufacturer.name, listings_path(manufacturer: manufacturer.name) %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @listing.model %>
-</p>
-
-<p>
-  <strong>Length:</strong>
-  <%= @listing.length %>
-</p>
-
-<p>
-  <strong>Beam:</strong>
-  <%= @listing.beam %>
-</p>
-
-<p>
-  <strong>Draft:</strong>
-  <%= @listing.draft %>
-</p>
-
-<p>
-  <strong>Displacement:</strong>
-  <%= @listing.displacement %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @listing.year %>
-</p>
-
-<p>
-  <strong>Cabins:</strong>
-  <%= @listing.cabins %>
-</p>
-
-<p>
-  <strong>Berths:</strong>
-  <%= @listing.berths %>
-</p>
-
-<p>
-  <strong>Engine:</strong>
-  <%= @listing.engine %>
-</p>
-
-<p>
-  <strong>Fuel:</strong>
-  <%= @listing.fuel %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @listing.hours %>
-</p>
-
-<p>
-  <strong>Horsepower:</strong>
-  <%= @listing.horsepower %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <% @listing.states.each do |state| %>
-  <%= link_to state.state, root_path(state: state.state) %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @listing.location %>
-</p>
-
-<p>
-  <strong>Zip code:</strong>
-  <%= @listing.zip_code %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @listing.price %>
-</p>
-
-<p>
-  <strong>Public name:</strong>
-  <%= @listing.public_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @listing.email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @listing.phone_number %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @listing.published %>
-</p>
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
