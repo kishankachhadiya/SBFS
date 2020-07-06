@@ -2,15 +2,14 @@ class ApplicationController < ActionController::Base
   before_action :set_featured
   helper_method :is_admin!
   before_action :set_current_user
+  before_action :authenticate_user!
   def set_featured
     # Grab makes that are featured to true and show them by newest
     @featured = Listing.where(featured: true).order('created_at ASC')
   end
 
   def is_admin!
-    unless current_user&.admin
-      redirect_to new_user_registration_path
-    end
+    current_user&.admin
   end
 
   def set_current_user

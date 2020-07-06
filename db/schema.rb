@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_19_195212) do
+ActiveRecord::Schema.define(version: 2020_07_06_113221) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 2020_06_19_195212) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price"
     t.boolean "featured"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
   create_table "listings_manufacturers", id: false, force: :cascade do |t|
@@ -192,4 +194,5 @@ ActiveRecord::Schema.define(version: 2020_06_19_195212) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "listings", "users"
 end

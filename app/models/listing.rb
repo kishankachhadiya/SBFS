@@ -6,6 +6,7 @@ class Listing < ApplicationRecord
   has_and_belongs_to_many :materials
   has_and_belongs_to_many :riggings
   has_and_belongs_to_many :states
+  belongs_to :user
   has_one_attached :thumbnail
   has_many_attached :images
   has_rich_text :description

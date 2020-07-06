@@ -3,5 +3,5 @@
 
 <%= link_to vote_text, like_listing_path(listing), method: :put, remote: :true, class: 'like-post' %>
 <% else %>
-<%= link_to "Yes, I'm interested!", new_user_session_path, class: 'like-post' %>
+<%= link_to "Show Interest", new_user_session_path, class: 'like-post' %>
 <% end %>

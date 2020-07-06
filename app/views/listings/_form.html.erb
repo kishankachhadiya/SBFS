@@ -39,22 +39,22 @@
 
     <div class="field">
       <%= form.label :length %>
-      <%= form.number_field :length %>
+      <%= form.number_field :length %> ft
     </div>
 
     <div class="field">
       <%= form.label :beam %>
-      <%= form.number_field :beam %>
+      <%= form.number_field :beam %> ft
     </div>
 
     <div class="field">
       <%= form.label :draft %>
-      <%= form.number_field :draft %>
+      <%= form.number_field :draft %> ft
     </div>
 
     <div class="field">
       <%= form.label :displacement %>
-      <%= form.number_field :displacement %>
+      <%= form.number_field :displacement %> lbs
     </div>
 
     <div class="field">
@@ -82,18 +82,6 @@
       <%= form.text_field :fuel %>
     </div>
 
-    <div class="field input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="fuel">Fuel</label>
-      </div>
-      <select class="custom-select" id="fuel">
-        <option selected>Choose...</option>
-        <option value="1">Gas</option>
-        <option value="2">Diesel</option>
-        <option value="3">Electric</option>
-      </select>
-    </div>
-
     <div class="field">
       <%= form.label :hours %>
       <%= form.number_field :hours %>
@@ -101,7 +89,7 @@
 
     <div class="field">
       <%= form.label :horsepower %>
-      <%= form.number_field :horsepower %>
+      <%= form.number_field :horsepower %> hp
     </div>
 
     <div class="field">
@@ -125,17 +113,17 @@
     </div>
 
     <div class="field">
-      <%= form.label :public_name %>
+      <%= "Contact Name" %>
       <%= form.text_field :public_name %>
     </div>
 
     <div class="field">
-      <%= form.label :email %>
+      <%= "Contact Email" %>
       <%= form.email_field :email %>
     </div>
 
     <div class="field">
-      <%= form.label :phone_number %>
+      <%= "Contact Phone Number" %>
       <%= form.phone_field :phone_number %>
     </div>
 
