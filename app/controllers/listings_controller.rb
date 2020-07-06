@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :like]
   before_action :set_manufacturers, except: [:show, :destroy]
   before_action :is_admin!, except: [:index, :show, :edit, :update, :like]
-  before_action :authenticate_user!, only: [:like]
+  before_action :authenticate_user!, except: [:show, :index]
 
   # GET /listings
   # GET /listings.json
