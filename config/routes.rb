@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'listings#index'
   post 'listings/search'
   get '/about' => 'pages#about'
+  resources :users, only: [:index]
   resources :conditions
   resources :states
   resources :materials

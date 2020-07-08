@@ -26,6 +26,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'acts_as_votable'
 gem "mini_magick"
+gem 'font-awesome-sass', '~> 5.13.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
