@@ -3,14 +3,9 @@
 @import "states.scss";
 @import "actiontext.scss";
 @import "pages.scss";
-@import 'bootstrap/dist/css/bootstrap';
-/*
- *= require_tree .
- *= require_self
- *= require font-awesome
- */
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import 'bootstrap/dist/css/bootstrap';
 
 .fixed-top {
   position: fixed;
