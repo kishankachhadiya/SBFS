@@ -3,8 +3,6 @@
 @import "states.scss";
 @import "actiontext.scss";
 @import "pages.scss";
-@import "font-awesome-sprockets";
-@import "font-awesome";
 @import 'bootstrap/dist/css/bootstrap';
 
 .fixed-top {
@@ -35,3 +33,6 @@ body {
   height: 225px;
   background-color: #343A40;
 }
+*= require
+@import "font-awesome-sprockets";
+@import "font-awesome";
