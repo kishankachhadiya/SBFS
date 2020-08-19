@@ -10,7 +10,9 @@
             Length: <%= link_to listing.length, listing %> ft / 
             Price: $<%= link_to listing.price, listing %>
             Year: <%= link_to listing.year, listing %>
-            State: <% listing.states %>
+            State: <% listing.states.each do |state| %>
+                    <%= link_to state.state, root_path(state: state.state) %>
+                    <% end %>
             <% else %>
             <div style="width: 240px; height: 135px">
                 <%= link_to listing.title, listing %>

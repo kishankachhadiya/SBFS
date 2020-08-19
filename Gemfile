@@ -27,7 +27,6 @@ gem 'simple_form'
 gem 'acts_as_votable'
 gem "mini_magick"
 gem 'font-awesome-sass', '~> 5.13.0'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -56,4 +55,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'ckeditor', github: 'galetahub/ckeditor'
 end

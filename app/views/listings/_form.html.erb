@@ -1,5 +1,5 @@
 <div class="container">
-  <%= form_with(model: listing, local: true) do |form| %>
+  <%= simple_form_for(@listing) do |f| %>
     <% if listing.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
@@ -13,143 +13,88 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title %>
+      <%= f.input :title, :input_html => {:style=> 'width: 700px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :Manufacturer %>
-      <%= form.collection_select :manufacturer_ids, Manufacturer.all, :id, :name, {}, {multiple:true} %>
+      <div class="form-group listing_manufacturer_ids">
+        <label class="" for="listing_description">Description</label><br>
+        <%= f.cktext_area :description %>
+      </div>
     </div>
 
     <div class="field">
-      <%= form.label :description %>
-      <%= form.rich_text_area :description %>
+      <div class="form-group listing_manufacturer_ids">
+        <label class="" for="listing_manufacturer_ids">Select Manufacturer</label><br>
+        <%= f.collection_select :manufacturer_ids, Manufacturer.all, :id, :manufacturer, {}, {multiple:true, class: "select2", :style=> 'width: 700px'} %>
+      </div>
     </div>
 
     <div class="field">
-      <%= form.label :equipment %>
-      <%= form.text_area :equipment %>
+      <%= f.input :year, collection: 1950..2020, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :model %>
-      <%= form.text_field :model %>
+      <%= f.input :length, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :length %>
-      <%= form.number_field :length %> ft
+      <%= f.input :beam, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :beam %>
-      <%= form.number_field :beam %> ft
+      <%= f.input :draft, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :draft %>
-      <%= form.number_field :draft %> ft
+      <%= f.input :displacement, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :displacement %>
-      <%= form.number_field :displacement %> lbs
+      <%= f.input :cabins, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :year %>
-      <%= form.number_field :year %>
+      <%= f.input :berths, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :cabins %>
-      <%= form.number_field :cabins %>
+      <%= f.input :engine, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :berths %>
-      <%= form.number_field :berths %>
+      <%= f.input :fuel, collection: [ "Gas", "Diesel", "Electric" ], :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :engine %>
-      <%= form.text_field :engine %>
+      <%= f.input :hours, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :fuel %>
-      <%= form.text_field :fuel %>
+      <%= f.input :horsepower, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :hours %>
-      <%= form.number_field :hours %>
+      <div class="form-group listing_state_ids">
+        <label class="" for="listing_state_ids">Select State</label><br>
+        <%= f.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true, class: "select2", :style=> 'width: 700px'} %>
+      </div>
     </div>
 
     <div class="field">
-      <%= form.label :horsepower %>
-      <%= form.number_field :horsepower %> hp
+      <%= f.input :location, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :state %>
-      <%= form.collection_select :state_ids, State.all, :id, :state, {}, {multiple:true} %>
+      <%= f.input :zip_code, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="field">
-      <%= form.label :location %>
-      <%= form.text_field :location %>
-    </div>
-
-    <div class="field">
-      <%= form.label :zip_code %>
-      <%= form.number_field :zip_code %>
-    </div>
-
-    <div class="field">
-      <%= form.label :price %>
-      <%= form.number_field :price %>
-    </div>
-
-    <div class="field">
-      <%= "Contact Name" %>
-      <%= form.text_field :public_name %>
-    </div>
-
-    <div class="field">
-      <%= "Contact Email" %>
-      <%= form.email_field :email %>
-    </div>
-
-    <div class="field">
-      <%= "Contact Phone Number" %>
-      <%= form.phone_field :phone_number %>
-    </div>
-
-    <div class="field">
-      <%= form.label :thumbnail %>
-      <%= form.file_field :thumbnail %>
-    </div>
-
-    <div class="field">
-      <%= form.label :images %>
-      <%= form.file_field :images, multiple: true %>
-    </div>
-
-    <div class="field">
-      <%= "Feature Listing?" %>
-      <%= form.check_box :featured %>
-      <%= "($15)" %>
-    </div>
-
-    <div class="field">
-      <%= form.label :published %>
-      <%= form.date_select :published %>
+      <%= f.input :price, as: :numeric, :input_html => {:style=> 'width: 400px'} %>
     </div>
 
     <div class="actions">
-      <%= form.submit %>
+      <%= f.button :submit %>
     </div>
   <% end %>
 </div>

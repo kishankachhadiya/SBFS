@@ -44,8 +44,9 @@
                   <p>
                   <h4>Sailboat's Location</h4>
                   <strong>Location:</strong> <td><%= @listing.location %></td><p>
-                  <strong>State:</strong> <% @listing.states.each do |state| %>
-                  <%= link_to state.state, root_path(state: state.state) %>
+                  <strong>State:</strong>
+                  <% @listing.states.each do |state| %>
+                    <%= link_to state.state, root_path(state: state.state) %>
                   <% end %>
                 </div>
             </div>
