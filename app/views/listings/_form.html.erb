@@ -26,7 +26,7 @@
     <div class="field">
       <div class="form-group listing_manufacturer_ids">
         <label class="" for="listing_manufacturer_ids">Select Manufacturer</label><br>
-        <%= f.collection_select :manufacturer_ids, Manufacturer.all, :id, :manufacturer, {}, {multiple:true, class: "select2", :style=> 'width: 700px'} %>
+        <%= f.collection_select :manufacturer_ids, Manufacturer.all, :id, :name, {}, {multiple:true, class: "select2", :style=> 'width: 700px'} %>
       </div>
     </div>
 
